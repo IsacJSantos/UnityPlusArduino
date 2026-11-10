@@ -10,7 +10,7 @@ public class Servomotor : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            _motorAxis.transform.localEulerAngles = Vector3.up * _axisAngle;
+            _motorAxis.transform.localEulerAngles = Vector3.up * (_axisAngle * -1);
             SerialCommunicationController.Instance.WriteMessage(_axisAngle.ToString());
         }
     }
