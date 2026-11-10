@@ -1120,9 +1120,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a9e22368a638d4ab1090fe7baad298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SerialCommunicationController
+  _serialPortConfig:
+    PortName: COM3
+    BaudRate: 9600
+    Parity: 0
+    DataBits: 8
+    StopBits: 1
+    Handshake: 0
+  _openOnStart: 0
+  btn_OpenPort: 0
   messageToSend: 
   sendMessage: 0
-  openPort: 0
 --- !u!4 &2143448791
 Transform:
   m_ObjectHideFlags: 0

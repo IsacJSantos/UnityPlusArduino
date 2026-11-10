@@ -1,3 +1,4 @@
+using SerialCommunication;
 using UnityEngine;
 
 public class Servomotor : MonoBehaviour
