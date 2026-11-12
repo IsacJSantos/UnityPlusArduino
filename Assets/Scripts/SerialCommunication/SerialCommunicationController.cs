@@ -10,15 +10,10 @@ namespace SerialCommunication
         [Header("Setup")]
         [SerializeField] private SeraialPortConfig _serialPortConfig;
         [SerializeField] private bool _openOnStart = false;
-        public bool btn_OpenPort = false;
 
-        [Space(10)]
-        public string messageToSend;
-        public bool sendMessage = false;
-
-        SerialPort _serialPort;
-        Thread _readThread;
-        CancellationTokenSource _cts;
+        private SerialPort _serialPort;
+        private Thread _readThread;
+        private CancellationTokenSource _cts;
 
         private bool _dataReceived = false;
         private string _receivedData = "";
@@ -33,21 +28,6 @@ namespace SerialCommunication
                 Instance = this;
             else
                 Destroy(gameObject);
-        }
-
-        private void OnValidate()
-        {
-            if (sendMessage && !string.IsNullOrEmpty(messageToSend))
-            {
-                sendMessage = false;
-                WriteMessage(messageToSend);
-            }
-
-            if (btn_OpenPort == true)
-            {
-                btn_OpenPort = false;
-                OpenPort();
-            }
         }
 
         void Start()
@@ -125,7 +105,7 @@ namespace SerialCommunication
         {
             if (string.IsNullOrEmpty(message)) return;
 
-            if (_serialPort.IsOpen)
+            if (_serialPort != null && _serialPort.IsOpen)
             {
                 Debug.Log("Sending message: " + message);
                 _serialPort.WriteLine(message);
